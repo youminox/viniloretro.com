@@ -1,0 +1,74 @@
+[
+  {
+    "id": 9,
+    "slug": "decada-50",
+    "name": "Década de los 50",
+    "parent": "",
+    "description": "Explora la época dorada de los años 50: el nacimiento del rock and roll, leyendas del jazz, blues, tango, bolero y los artistas que revolucionaron la música en vinilo.",
+    "count": 600
+  },
+  {
+    "id": 6,
+    "slug": "cantantes-de-opera",
+    "name": "Cantantes de Ópera",
+    "parent": "",
+    "description": "Enciclopedia de los grandes cantantes de ópera y música lírica: tenores, sopranos, barítonos, teatros históricos y las voces más sublimes del repertorio clásico.",
+    "count": 258
+  },
+  {
+    "id": 8,
+    "slug": "decada-60",
+    "name": "Década de los 60",
+    "parent": "",
+    "description": "Viaja a la era mágica de los años 60: la invasión británica, el auge del soul, rock psicodélico, pop clásico y los cantantes que transformaron la cultura musical.",
+    "count": 255
+  },
+  {
+    "id": 11,
+    "slug": "decada-90",
+    "name": "Década de los 90",
+    "parent": "",
+    "description": "La mejor música de los años 90: grandes voces del pop, rock alternativo, R&B, baladas latinas y los álbumes que definieron el cierre del siglo XX.",
+    "count": 243
+  },
+  {
+    "id": 7,
+    "slug": "decada-70",
+    "name": "Década de los 70",
+    "parent": "",
+    "description": "Descubre los extraordinarios años 70: himnos del rock clásico, música disco, funk, baladas románticas en español y las bandas legendarias del formato LP.",
+    "count": 235
+  },
+  {
+    "id": 10,
+    "slug": "decada-80",
+    "name": "Década de los 80",
+    "parent": "",
+    "description": "Revive la inolvidable década de los 80: íconos del pop, rock en español, synth-pop, baladas románticas y los cantantes que marcaron época en América y Europa.",
+    "count": 208
+  },
+  {
+    "id": 4,
+    "slug": "curiosidades",
+    "name": "Guías y Curiosidades del Vinilo",
+    "parent": "",
+    "description": "Manuales técnicos, historia del vinilo, cómo funcionan los tocadiscos, mantenimiento de agujas y púas, conexión de altavoces y consejos expertos para coleccionistas.",
+    "count": 62
+  },
+  {
+    "id": 3,
+    "slug": "resenas",
+    "name": "Reseñas de Tocadiscos",
+    "parent": "",
+    "description": "Comparativas, análisis a fondo y guías de compra de los mejores tocadiscos de vinilo: modelos vintage, Bluetooth, profesionales, marcas icónicas y dónde comprarlos.",
+    "count": 33
+  },
+  {
+    "id": 5,
+    "slug": "cantantes-influyentes",
+    "name": "Cantantes Influyentes",
+    "parent": "",
+    "description": "Biografías y legado de los cantantes más influyentes de la historia musical que dejaron una huella imborrable en la cultura del vinilo.",
+    "count": 1
+  }
+]
