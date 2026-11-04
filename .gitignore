@@ -39,5 +39,5 @@ yarn-error.log*
 next-env.d.ts
 
 # WordPress XML export & local audit PDFs
-*.xml
-*.pdf
+/viniloretro.WordPress*.xml
+/*.pdf

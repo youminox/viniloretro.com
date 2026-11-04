@@ -26,11 +26,6 @@ const nextConfig: NextConfig = {
     return [
       // Legacy WordPress Sitemaps -> Next.js Sitemap
       {
-        source: "/wp-sitemap.xml",
-        destination: "/sitemap.xml",
-        permanent: true,
-      },
-      {
         source: "/wp-sitemap/:path*",
         destination: "/sitemap.xml",
         permanent: true,
