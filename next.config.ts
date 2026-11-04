@@ -24,18 +24,6 @@ const nextConfig: NextConfig = {
   },
   async redirects() {
     return [
-      // Consolidate www.viniloretro.com -> https://viniloretro.com (fixes Ahrefs canonical split)
-      {
-        source: "/:path*",
-        has: [
-          {
-            type: "host",
-            value: "www.viniloretro.com",
-          },
-        ],
-        destination: "https://viniloretro.com/:path*",
-        permanent: true,
-      },
       // Legacy WordPress Sitemaps -> Next.js Sitemap
       {
         source: "/wp-sitemap.xml",
