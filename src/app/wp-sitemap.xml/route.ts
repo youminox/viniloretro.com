@@ -7,6 +7,7 @@ export async function GET() {
 
   const urls: { loc: string; priority: string; changefreq: string }[] = [
     { loc: `${SITE_URL}/`, priority: "1.0", changefreq: "daily" },
+    { loc: `${SITE_URL}/mapa-del-sitio/`, priority: "0.85", changefreq: "weekly" },
     { loc: `${SITE_URL}/hola-hablamos/`, priority: "0.7", changefreq: "monthly" },
     { loc: `${SITE_URL}/politica-privacidad/`, priority: "0.3", changefreq: "yearly" },
     { loc: `${SITE_URL}/politica-de-cookies/`, priority: "0.3", changefreq: "yearly" },

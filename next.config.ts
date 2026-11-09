@@ -24,9 +24,19 @@ const nextConfig: NextConfig = {
   },
   async redirects() {
     return [
-      // Legacy WordPress Sitemaps -> Next.js Sitemap
+      // Legacy WordPress Sitemaps & Sub-Sitemaps -> Next.js Sitemap
       {
         source: "/wp-sitemap/:path*",
+        destination: "/sitemap.xml",
+        permanent: true,
+      },
+      {
+        source: "/wp-sitemap-:slug/",
+        destination: "/sitemap.xml",
+        permanent: true,
+      },
+      {
+        source: "/wp-sitemap-:slug",
         destination: "/sitemap.xml",
         permanent: true,
       },
@@ -35,7 +45,22 @@ const nextConfig: NextConfig = {
         destination: "/sitemap.xml",
         permanent: true,
       },
-      // WordPress category pagination & category URL compatibility
+      {
+        source: "/sitemap_index.xml/",
+        destination: "/sitemap.xml",
+        permanent: true,
+      },
+      // WordPress root pagination & category pagination compatibility
+      {
+        source: "/page/:page/",
+        destination: "/",
+        permanent: true,
+      },
+      {
+        source: "/page/:page",
+        destination: "/",
+        permanent: true,
+      },
       {
         source: "/category/:slug/page/:page/",
         destination: "/:slug/",
@@ -78,6 +103,26 @@ const nextConfig: NextConfig = {
         permanent: true,
       },
       {
+        source: "/comments/feed/",
+        destination: "/",
+        permanent: true,
+      },
+      {
+        source: "/comments/feed",
+        destination: "/",
+        permanent: true,
+      },
+      {
+        source: "/privacy-policy/feed/",
+        destination: "/politica-privacidad/",
+        permanent: true,
+      },
+      {
+        source: "/privacy-policy/feed",
+        destination: "/politica-privacidad/",
+        permanent: true,
+      },
+      {
         source: "/feed/",
         destination: "/",
         permanent: true,
@@ -88,6 +133,56 @@ const nextConfig: NextConfig = {
         permanent: true,
       },
       {
+        source: "/:category/:slug/feed/",
+        destination: "/:category/:slug/",
+        permanent: true,
+      },
+      {
+        source: "/:category/:slug/feed",
+        destination: "/:category/:slug/",
+        permanent: true,
+      },
+      {
+        source: "/:category/feed/",
+        destination: "/:category/",
+        permanent: true,
+      },
+      {
+        source: "/:category/feed",
+        destination: "/:category/",
+        permanent: true,
+      },
+      {
+        source: "/cluster/attachment/:att*/",
+        destination: "/resenas/",
+        permanent: true,
+      },
+      {
+        source: "/cluster/attachment/:att*",
+        destination: "/resenas/",
+        permanent: true,
+      },
+      {
+        source: "/cluster/",
+        destination: "/resenas/",
+        permanent: true,
+      },
+      {
+        source: "/cluster",
+        destination: "/resenas/",
+        permanent: true,
+      },
+      {
+        source: "/hola-hablamos/attachment/:att*/",
+        destination: "/hola-hablamos/",
+        permanent: true,
+      },
+      {
+        source: "/hola-hablamos/attachment/:att*",
+        destination: "/hola-hablamos/",
+        permanent: true,
+      },
+      {
         source: "/:category/:slug/attachment/:att*/",
         destination: "/:category/:slug/",
         permanent: true,
@@ -95,6 +190,78 @@ const nextConfig: NextConfig = {
       {
         source: "/:category/:slug/attachment/:att*",
         destination: "/:category/:slug/",
+        permanent: true,
+      },
+      {
+        source: "/:slug/attachment/:att*/",
+        destination: "/",
+        permanent: true,
+      },
+      {
+        source: "/:slug/attachment/:att*",
+        destination: "/",
+        permanent: true,
+      },
+      // Legacy WordPress root-level media attachment slugs & uncategorized slug redirects
+      {
+        source: "/photo-by-james-yarema/",
+        destination: "/",
+        permanent: true,
+      },
+      {
+        source: "/photo-by-james-yarema",
+        destination: "/",
+        permanent: true,
+      },
+      {
+        source: "/photo-by-david-lozano/",
+        destination: "/",
+        permanent: true,
+      },
+      {
+        source: "/photo-by-david-lozano",
+        destination: "/",
+        permanent: true,
+      },
+      {
+        source: "/vinilo-retro/",
+        destination: "/",
+        permanent: true,
+      },
+      {
+        source: "/vinilo-retro",
+        destination: "/",
+        permanent: true,
+      },
+      {
+        source: "/disco-de-vinilo/",
+        destination: "/",
+        permanent: true,
+      },
+      {
+        source: "/disco-de-vinilo",
+        destination: "/",
+        permanent: true,
+      },
+      {
+        source: "/que-fue-primero-el-disco-de-acetato-o-el-cassette/",
+        destination: "/curiosidades/que-fue-primero-el-disco-de-acetato-o-el-cassette/",
+        permanent: true,
+      },
+      {
+        source: "/que-fue-primero-el-disco-de-acetato-o-el-cassette",
+        destination: "/curiosidades/que-fue-primero-el-disco-de-acetato-o-el-cassette/",
+        permanent: true,
+      },
+      // Legacy WordPress media uploads path -> local optimized images
+      {
+        source: "/wp-content/uploads/:year/:month/:file/",
+        destination: "/images/:file",
+        permanent: true,
+      },
+      {
+        source: "/wp-content/uploads/:year/:month/:file",
+        destination: "/images/:file",
         permanent: true,
       },
       // Common legal & contact aliases

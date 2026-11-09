@@ -10,6 +10,7 @@ import {
   getPostBySlug,
   getCategoryBySlug,
   getRelatedPosts,
+  getAdjacentPosts,
   getContextualRelatedPosts,
   getFeaturedTurntableGuides,
   getTopSeoPosts,
@@ -163,6 +164,7 @@ export default async function ArticlePage({ params }: { params: Params }) {
 
   const category = getCategoryBySlug(post.category);
   const relatedPosts = getRelatedPosts(post, 4);
+  const adjacentPosts = getAdjacentPosts(post);
   const contextualPosts = getContextualRelatedPosts(post, 3);
   const turntableGuides = getFeaturedTurntableGuides(5).filter(
     (p) => p.id !== post.id
@@ -522,6 +524,43 @@ export default async function ArticlePage({ params }: { params: Params }) {
                   </p>
                 </div>
               </div>
+
+              {/* Sequential Previous / Next Navigation inside Category (Crawl Ring) */}
+              {(adjacentPosts.prev || adjacentPosts.next) && (
+                <nav
+                  aria-label="Navegación secuencial de artículos"
+                  className="mt-10 grid gap-4 sm:grid-cols-2"
+                >
+                  {adjacentPosts.prev && (
+                    <Link
+                      href={getPostUrl(adjacentPosts.prev)}
+                      className="group flex flex-col justify-between rounded-2xl border border-stone-200 bg-white p-5 transition hover:border-primary hover:shadow-md"
+                    >
+                      <span className="text-xs font-extrabold uppercase tracking-wider text-stone-400 group-hover:text-primary">
+                        ← Artículo anterior en{" "}
+                        {category?.name || post.categoryName}
+                      </span>
+                      <span className="mt-1.5 text-sm sm:text-base font-bold text-stone-900 group-hover:text-primary line-clamp-2">
+                        {adjacentPosts.prev.title}
+                      </span>
+                    </Link>
+                  )}
+                  {adjacentPosts.next && (
+                    <Link
+                      href={getPostUrl(adjacentPosts.next)}
+                      className="group flex flex-col justify-between rounded-2xl border border-stone-200 bg-white p-5 text-left sm:text-right transition hover:border-primary hover:shadow-md"
+                    >
+                      <span className="text-xs font-extrabold uppercase tracking-wider text-stone-400 group-hover:text-primary">
+                        Siguiente artículo en{" "}
+                        {category?.name || post.categoryName} →
+                      </span>
+                      <span className="mt-1.5 text-sm sm:text-base font-bold text-stone-900 group-hover:text-primary line-clamp-2">
+                        {adjacentPosts.next.title}
+                      </span>
+                    </Link>
+                  )}
+                </nav>
+              )}
 
               {/* Bottom Related Posts Grid */}
               {relatedPosts.length > 0 && (

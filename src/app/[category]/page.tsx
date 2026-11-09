@@ -1,6 +1,6 @@
 import type { Metadata } from "next";
 import Link from "next/link";
-import { notFound } from "next/navigation";
+import { notFound, permanentRedirect } from "next/navigation";
 import Header from "@/components/Header";
 import Footer from "@/components/Footer";
 import Breadcrumbs from "@/components/Breadcrumbs";
@@ -8,6 +8,7 @@ import AdBanner from "@/components/AdBanner";
 import {
   getAllCategories,
   getCategoryBySlug,
+  getPostBySlug,
   getPostsByCategory,
   getPostUrl,
   getImageUrl,
@@ -59,6 +60,11 @@ export default async function CategoryPage({ params }: { params: Params }) {
   const category = getCategoryBySlug(categorySlug);
 
   if (!category) {
+    // If accessed as /:slug/ without category prefix, permanently redirect to /:category/:slug/
+    const matchingPost = getPostBySlug(categorySlug);
+    if (matchingPost) {
+      permanentRedirect(getPostUrl(matchingPost));
+    }
     notFound();
   }
 

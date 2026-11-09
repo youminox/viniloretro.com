@@ -134,20 +134,23 @@ export function getRecentPosts(limit = 24): Post[] {
 }
 
 export function getRelatedPosts(currentPost: Post, limit = 4): Post[] {
-  const sameCategory = posts.filter(
-    (p) => p.id !== currentPost.id && p.category === currentPost.category
+  const allInCat = posts.filter((p) => p.category === currentPost.category);
+  const currentIdx = Math.max(
+    0,
+    allInCat.findIndex((p) => p.id === currentPost.id)
   );
-  // Prioritize Top SEO posts within the same category first, then contextual matches
+  const sameCategory = allInCat.filter((p) => p.id !== currentPost.id);
+  // Prioritize Top SEO posts within the same category first, then sequential neighbors
   const topInCat = sameCategory.filter((p) => p.isTopSeo);
   const regularInCat = sameCategory.filter((p) => !p.isTopSeo);
   const combined = [...topInCat, ...regularInCat];
   if (combined.length >= limit) {
-    // Pick a deterministic slice based on currentPost.id so internal links distribute evenly across all 1,895 posts
+    // Pick a deterministic slice based on sequential currentIdx so internal links cover 100% of all 1,895 posts
     const result: Post[] = [];
     if (topInCat.length > 0) {
-      result.push(topInCat[currentPost.id % topInCat.length]);
+      result.push(topInCat[currentIdx % topInCat.length]);
     }
-    const startIdx = currentPost.id % Math.max(1, regularInCat.length);
+    const startIdx = currentIdx % Math.max(1, regularInCat.length);
     for (let i = 0; i < regularInCat.length && result.length < limit; i++) {
       const candidate = regularInCat[(startIdx + i) % regularInCat.length];
       if (!result.some((r) => r.id === candidate.id)) {
@@ -157,6 +160,24 @@ export function getRelatedPosts(currentPost: Post, limit = 4): Post[] {
     return result.slice(0, limit);
   }
   return combined.slice(0, limit);
+}
+
+export function getAdjacentPosts(currentPost: Post): {
+  prev: Post | null;
+  next: Post | null;
+} {
+  const allInCat = posts.filter((p) => p.category === currentPost.category);
+  if (allInCat.length <= 1) {
+    return { prev: null, next: null };
+  }
+  const idx = allInCat.findIndex((p) => p.id === currentPost.id);
+  const safeIdx = idx >= 0 ? idx : 0;
+  const prev = allInCat[(safeIdx - 1 + allInCat.length) % allInCat.length];
+  const next = allInCat[(safeIdx + 1) % allInCat.length];
+  return {
+    prev: prev.id !== currentPost.id ? prev : null,
+    next: next.id !== currentPost.id && next.id !== prev.id ? next : null,
+  };
 }
 
 export function getContextualRelatedPosts(currentPost: Post, limit = 3): Post[] {

@@ -155,6 +155,14 @@ export default function Footer() {
                   Cantantes de Ópera (258)
                 </Link>
               </li>
+              <li>
+                <Link
+                  href="/mapa-del-sitio/"
+                  className="font-semibold text-amber-400 hover:text-amber-300 transition-colors"
+                >
+                  Mapa del Sitio (1,895 Guías)
+                </Link>
+              </li>
             </ul>
           </div>
 
