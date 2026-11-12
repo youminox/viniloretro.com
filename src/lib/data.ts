@@ -239,6 +239,7 @@ export function getImageUrl(url: string): string {
 export function generateExcerpt(html: string, maxLength = 158): string {
   if (!html) return SITE_DESCRIPTION;
   const plain = html
+    .replace(/<h[1-6][^>]*>[\s\S]*?<\/h[1-6]>/gi, " ")
     .replace(/<[^>]*>/g, " ")
     .replace(/\s+/g, " ")
     .trim();

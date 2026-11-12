@@ -62,6 +62,16 @@ const nextConfig: NextConfig = {
         permanent: true,
       },
       {
+        source: "/category/:slug/feed/:path*",
+        destination: "/:slug/",
+        permanent: true,
+      },
+      {
+        source: "/category/:slug/feed",
+        destination: "/:slug/",
+        permanent: true,
+      },
+      {
         source: "/category/:slug/page/:page/",
         destination: "/:slug/",
         permanent: true,
@@ -91,7 +101,7 @@ const nextConfig: NextConfig = {
         destination: "/:slug/",
         permanent: true,
       },
-      // Legacy WordPress author, tag, feed & attachment URLs
+      // Legacy WordPress author, tag, comments, feed & attachment URLs
       {
         source: "/author/:path*",
         destination: "/hola-hablamos/",
@@ -103,22 +113,17 @@ const nextConfig: NextConfig = {
         permanent: true,
       },
       {
-        source: "/comments/feed/",
+        source: "/comments/:path*",
         destination: "/",
         permanent: true,
       },
       {
-        source: "/comments/feed",
+        source: "/comments",
         destination: "/",
         permanent: true,
       },
       {
-        source: "/privacy-policy/feed/",
-        destination: "/politica-privacidad/",
-        permanent: true,
-      },
-      {
-        source: "/privacy-policy/feed",
+        source: "/privacy-policy/:path*",
         destination: "/politica-privacidad/",
         permanent: true,
       },
@@ -133,22 +138,26 @@ const nextConfig: NextConfig = {
         permanent: true,
       },
       {
-        source: "/:category/:slug/feed/",
+        source:
+          "/:category(resenas|curiosidades|decada-50|decada-60|decada-70|decada-80|decada-90|cantantes-de-opera|cantantes-influyentes)/:slug/feed/",
         destination: "/:category/:slug/",
         permanent: true,
       },
       {
-        source: "/:category/:slug/feed",
+        source:
+          "/:category(resenas|curiosidades|decada-50|decada-60|decada-70|decada-80|decada-90|cantantes-de-opera|cantantes-influyentes)/:slug/feed",
         destination: "/:category/:slug/",
         permanent: true,
       },
       {
-        source: "/:category/feed/",
+        source:
+          "/:category(resenas|curiosidades|decada-50|decada-60|decada-70|decada-80|decada-90|cantantes-de-opera|cantantes-influyentes)/feed/",
         destination: "/:category/",
         permanent: true,
       },
       {
-        source: "/:category/feed",
+        source:
+          "/:category(resenas|curiosidades|decada-50|decada-60|decada-70|decada-80|decada-90|cantantes-de-opera|cantantes-influyentes)/feed",
         destination: "/:category/",
         permanent: true,
       },

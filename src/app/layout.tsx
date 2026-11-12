@@ -22,9 +22,6 @@ export const metadata: Metadata = {
     template: `%s | ${SITE_NAME}`,
   },
   description: SITE_DESCRIPTION,
-  alternates: {
-    canonical: `${SITE_URL}/`,
-  },
   openGraph: {
     title: `${SITE_NAME} — Tocadiscos de Vinilo, Guías y Cultura Musical`,
     description: SITE_DESCRIPTION,

@@ -12,7 +12,7 @@ import {
 } from "@/lib/data";
 
 export const metadata: Metadata = {
-  title: `Mapa del Sitio e Índice Completo de Guías | ${SITE_NAME}`,
+  title: "Mapa del Sitio e Índice Completo de Guías",
   description:
     "Índice general completo con las 1,895 guías de compra de tocadiscos, mantenimiento de agujas, reseñas y enciclopedia musical de los años 50, 60, 70, 80, 90 y ópera.",
   alternates: {

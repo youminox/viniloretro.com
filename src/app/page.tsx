@@ -19,7 +19,9 @@ import {
 } from "@/lib/data";
 
 export const metadata: Metadata = {
-  title: `${SITE_NAME} — Mejores Tocadiscos de Vinilo, Guías de Agujas y Música de los 50 a los 90`,
+  title: {
+    absolute: `${SITE_NAME} — Mejores Tocadiscos de Vinilo, Guías de Agujas y Música de los 50 a los 90`,
+  },
   description: SITE_DESCRIPTION,
   alternates: { canonical: `${SITE_URL}/` },
 };
