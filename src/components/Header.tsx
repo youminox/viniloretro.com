@@ -2,6 +2,7 @@
 
 import { useState, useEffect, useRef } from "react";
 import Link from "next/link";
+import { openChat } from "@/lib/chat-constants";
 
 interface SearchIndexItem {
   t: string;
@@ -174,8 +175,16 @@ export default function Header() {
           </Link>
         </nav>
 
-        {/* Actions: Quick Search + Mobile Menu Button */}
+        {/* Actions: Quick Search + AI Advisor + Mobile Menu Button */}
         <div className="flex items-center gap-2">
+          <button
+            type="button"
+            onClick={() => openChat()}
+            className="hidden sm:inline-flex items-center gap-1.5 rounded-full bg-gradient-to-r from-[#1c110a] via-[#78350f] to-[#b45309] px-3.5 py-2 text-xs font-extrabold text-amber-200 shadow-sm hover:opacity-95 transition cursor-pointer"
+          >
+            <span>💿</span>
+            <span>Asesor IA</span>
+          </button>
           <button
             type="button"
             onClick={() => setSearchOpen((v) => !v)}
