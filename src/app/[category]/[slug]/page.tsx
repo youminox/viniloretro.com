@@ -5,6 +5,8 @@ import Header from "@/components/Header";
 import Footer from "@/components/Footer";
 import Breadcrumbs from "@/components/Breadcrumbs";
 import AdBanner from "@/components/AdBanner";
+import AmazonAffiliateBox from "@/components/AmazonAffiliateBox";
+import { getContextualAmazonProducts } from "@/lib/amazon";
 import {
   getAllPosts,
   getPostBySlug,
@@ -176,6 +178,11 @@ export default async function ArticlePage({ params }: { params: Params }) {
   const isLaRazonPowerPage =
     post.slug ===
     "cuando-dejaron-de-usarse-los-discos-de-vinilo-un-viaje-en-el-tiempo";
+  const amazonContext = getContextualAmazonProducts(
+    post.slug,
+    post.category,
+    post.title
+  );
 
   const { enhancedHtml, toc } = addHeadingIdsAndExtractToc(post.content);
   const [firstHalfContent, secondHalfContent] =
@@ -350,6 +357,14 @@ export default async function ArticlePage({ params }: { params: Params }) {
                 dangerouslySetInnerHTML={{ __html: firstHalfContent }}
               />
 
+              {/* Mid-Article High-CTR Mobile Amazon Affiliate Box */}
+              <AmazonAffiliateBox
+                variant="inline"
+                sectionTitle={amazonContext.sectionTitle}
+                sectionSubtitle={amazonContext.sectionSubtitle}
+                products={amazonContext.products}
+              />
+
               {/* Contextual Internal Links Box + In-Article AdSense */}
               {secondHalfContent && (
                 <>
@@ -385,6 +400,14 @@ export default async function ArticlePage({ params }: { params: Params }) {
                   />
                 </>
               )}
+
+              {/* End-of-Article 3-Product Amazon Comparison Showcase */}
+              <AmazonAffiliateBox
+                variant="showcase"
+                sectionTitle={amazonContext.sectionTitle}
+                sectionSubtitle={amazonContext.sectionSubtitle}
+                products={amazonContext.products}
+              />
 
               {/* Power Page Hub on the La Razón (DR 83) Backlink Target Page */}
               {isLaRazonPowerPage && (
@@ -606,6 +629,14 @@ export default async function ArticlePage({ params }: { params: Params }) {
             {/* Sticky Sidebar — Dinamica.pe style */}
             <aside className="mt-12 lg:mt-0 lg:w-80 lg:flex-shrink-0">
               <div className="sticky top-24 space-y-8">
+                {/* Sticky Amazon Affiliate Recommendations */}
+                <AmazonAffiliateBox
+                  variant="sidebar"
+                  sectionTitle={amazonContext.sectionTitle}
+                  sectionSubtitle={amazonContext.sectionSubtitle}
+                  products={amazonContext.products}
+                />
+
                 {/* Related Articles Box */}
                 {relatedPosts.length > 0 && (
                   <div className="rounded-2xl border border-stone-200 bg-stone-50/70 p-6">

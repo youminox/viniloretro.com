@@ -187,10 +187,16 @@ export default function Footer() {
         </div>
 
         <div className="mt-12 border-t border-stone-800/80 pt-8 flex flex-col sm:flex-row items-center justify-between gap-4 text-xs text-stone-400">
-          <p>
-            © {new Date().getFullYear()} {SITE_NAME} (viniloretro.com). Todos
-            los derechos reservados.
-          </p>
+          <div className="space-y-1 text-center sm:text-left">
+            <p>
+              © {new Date().getFullYear()} {SITE_NAME} (viniloretro.com). Todos
+              los derechos reservados.
+            </p>
+            <p className="text-[11px] text-stone-500">
+              En calidad de Afiliado de Amazon, {SITE_NAME} obtiene ingresos por
+              las compras adscritas que cumplen los requisitos aplicables.
+            </p>
+          </div>
           <div className="flex flex-wrap items-center gap-5">
             <Link
               href="/hola-hablamos/"
